@@ -1,1 +1,1 @@
-dinosaur
+dinosaur game for design and programming
