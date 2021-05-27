@@ -5,7 +5,7 @@ body {
     margin:0px; padding:0px;
 }
 
-dino, background {
+player, rock, tree, astroid, background {
     position: absolute;
     display: block;
     box-sizing: border-box;
@@ -18,8 +18,27 @@ background {
     background-size: cover;
 }
 
-dino {
+player {
     background-image: url(../pictures/dinoSprite.png);
-    width: 90px; height: 120px;
+    width: 42px; height: 42px;
+    cursor: pointer;
+}
+
+rock {
+    background-image: url(../pictures/spaceRock.png);
+    width: 42px; height: 42px;
+    cursor: pointer;
+}
+
+tree {
+    background-image: url(../pictures/spaceTree.png);
+    width: 168px; height: 168px;
+    background-size: 50%;
+    cursor: pointer;
+}
+
+astroid {
+    background-image: url(../pictures/astroid.png);
+    width: 84px; height: 68px;
     cursor: pointer;
 }

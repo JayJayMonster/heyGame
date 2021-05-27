@@ -1,4 +1,4 @@
-export class Dino {
+export class Player {
     constructor() {
         this.horizontalSpeed = 0;
         console.log("Rex was created!");
@@ -7,10 +7,10 @@ export class Dino {
         this.create();
     }
     create() {
-        this.div = document.createElement("dino");
+        this.div = document.createElement("player");
         document.body.appendChild(this.div);
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
-        this.y = 540;
+        this.y = 600;
         this.health = 100;
     }
     update() {
@@ -53,4 +53,4 @@ export class Dino {
         this.health--;
     }
 }
-//# sourceMappingURL=dino.js.map
+//# sourceMappingURL=player.js.map
