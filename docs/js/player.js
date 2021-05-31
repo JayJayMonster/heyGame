@@ -10,8 +10,8 @@ export class Player {
         this.div = document.createElement("player");
         document.body.appendChild(this.div);
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
-        this.y = 600;
-        this.health = 100;
+        this.y = 550;
+        this.health = 5;
     }
     update() {
         this.x += this.horizontalSpeed;
@@ -19,28 +19,26 @@ export class Player {
     }
     onKeyDownHandler(e) {
         switch (e.key) {
+            case "a":
             case "ArrowLeft":
                 this.horizontalSpeed = -5;
                 break;
-            case "ArrowRight":
-                this.horizontalSpeed = 5;
-                break;
-            case "a":
-                this.horizontalSpeed = -5;
-                break;
             case "d":
+            case "ArrowRight":
                 this.horizontalSpeed = 5;
                 break;
             case " ":
                 this.y = 500;
-                break;
-            default:
-                break;
         }
     }
     onKeyUpHandler(e) {
-        if (e.key == "ArrowLeft" || e.key == "ArrowRight" || e.key == "a" || e.key == "d") {
-            this.horizontalSpeed = 0;
+        switch (e.key) {
+            case "a":
+            case "d":
+            case "ArrowLeft":
+            case "ArrowRight":
+                this.horizontalSpeed = 0;
+                break;
         }
         if (e.key == " ") {
             this.y = 550;
@@ -51,7 +49,11 @@ export class Player {
     }
     hit() {
         this.health--;
+        console.log(this.health);
         this.div.style.filter = "grayscale(100%)";
+        if (this.health <= 0) {
+            console.log("GAME OVER BITCH");
+        }
     }
 }
 //# sourceMappingURL=player.js.map

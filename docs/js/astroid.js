@@ -8,14 +8,14 @@ export class Astroid {
         document.body.appendChild(this.div);
         this.x = Math.random() * window.innerWidth;
         this.y = 270 - Math.random() * 30;
-        this.xSpeed = Math.random();
-        this.ySpeed = Math.random();
+        this.xSpeed = 2;
+        this.ySpeed = 2;
     }
     update() {
         this.y += this.ySpeed;
         this.x -= this.xSpeed;
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
-        if (this.y + this.div.clientHeight > 800) {
+        if (this.y + this.div.clientHeight > 600) {
             this.y = -70;
             this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         }
