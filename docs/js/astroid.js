@@ -6,15 +6,17 @@ export class Astroid {
     create() {
         this.div = document.createElement("astroid");
         document.body.appendChild(this.div);
-        this.x = 600;
-        this.y = 270;
+        this.x = Math.random() * window.innerWidth;
+        this.y = 270 - Math.random() * 30;
+        this.xSpeed = Math.random();
+        this.ySpeed = Math.random();
     }
     update() {
-        this.y++;
-        this.x--;
+        this.y += this.ySpeed;
+        this.x -= this.xSpeed;
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
         if (this.y + this.div.clientHeight > 800) {
-            this.y = 0;
+            this.y = -70;
             this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         }
     }

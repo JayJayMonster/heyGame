@@ -70,5 +70,6 @@ export class Player {
 
     hit(){
         this.health --;
+        this.div.style.filter = "grayscale(100%)";
     }
 }

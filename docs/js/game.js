@@ -5,7 +5,7 @@ class Game {
         this.astroid = [];
         console.log("Game was created!");
         this.player = new Player();
-        for (let i = 0; i < (Math.random() * 5); i++) {
+        for (let i = 0; i < (Math.random() * 10); i++) {
             this.astroid.push(new Astroid());
         }
         this.gameLoop();
@@ -14,6 +14,13 @@ class Game {
         this.player.update();
         for (const astroid of this.astroid) {
             astroid.update();
+            let dinoRect = this.player.getRect();
+            let astroidRect = astroid.getRect();
+            let hit = this.checkCollision(dinoRect, astroidRect);
+            if (hit) {
+                this.player.hit();
+                astroid.remove();
+            }
         }
         requestAnimationFrame(() => this.gameLoop());
     }

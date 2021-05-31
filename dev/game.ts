@@ -15,7 +15,7 @@ class Game {
         this.player = new Player();
         //this.tree = new Tree();
         //this.rock = new Rock();
-        for(let i = 0; i < (Math.random() * 5); i++){
+        for(let i = 0; i < (Math.random() * 10); i++){
             this.astroid.push(new Astroid())
         }
 
@@ -27,16 +27,15 @@ class Game {
         this.player.update();
         for(const astroid of this.astroid){
             astroid.update();
+            let dinoRect = this.player.getRect();
+            let astroidRect = astroid.getRect();
+            let hit = this.checkCollision(dinoRect, astroidRect);
+            if (hit){
+                this.player.hit();
+                astroid.remove();
+            }
         }
-        // let dinoRect = this.player.getRect();
-        // let astroidRect = this.astroid[this.astroid.length].getRect;
-        // let hit = this.checkCollision(dinoRect, astroidRect);
 
-        // if (hit){
-        //     this.player.hit();
-        //     this.astroid[this.astroid.length].remove();
-        //     //this.astroid = new Astroid();
-        // }
 
         requestAnimationFrame(() => this.gameLoop())
     }
