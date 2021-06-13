@@ -1,16 +1,16 @@
-export class Rock {
-    constructor() {
-        console.log("Rock was created");
-        this.create();
-    }
-    create() {
-        this.div = document.createElement("rock");
-        document.body.appendChild(this.div);
-        this.x = 500;
-        this.y = 540;
+import { GameObject } from "./gameObject.js";
+export class Rock extends GameObject {
+    constructor(tagName) {
+        super(tagName);
+        this.x = Math.floor(Math.random() * window.innerWidth) + window.innerWidth;
+        this.y = 600;
     }
     update() {
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        this.x -= 3;
+        super.update();
+        if (this.x < -this.div.clientWidth) {
+            this.x = window.innerWidth;
+        }
     }
 }
 //# sourceMappingURL=rock.js.map

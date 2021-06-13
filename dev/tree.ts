@@ -1,25 +1,19 @@
-export class Tree {
-    
-    x : number
-    y : number
-    div : HTMLElement
-    
-    constructor() {
-        console.log("Tree was created");
-        
-        //for (let i = 0; i < 3; i++) {
-              this.create();
-        //}
-    }
-    create() {
-        this.div = document.createElement("tree");
-        document.body.appendChild(this.div);
-        
-        this.x = 400;
-        this.y = 500;
-    }
-    update() {
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
-    }
+import { GameObject } from "./gameObject.js";
 
+export class Tree extends GameObject{
+    
+    constructor(tagName : string) { 
+        super(tagName);
+        this.x = Math.floor(Math.random() * window.innerWidth) + window.innerWidth;
+        this.y = 550;
+    }
+    
+    public update(){
+        this.x -= 3;
+        super.update();
+
+        if(this.x < -this.div.clientWidth){
+            this.x = window.innerWidth;
+        }
+    }
 }

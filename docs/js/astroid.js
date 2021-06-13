@@ -1,11 +1,7 @@
-export class Astroid {
-    constructor() {
-        console.log("Astroid was created");
-        this.create();
-    }
-    create() {
-        this.div = document.createElement("astroid");
-        document.body.appendChild(this.div);
+import { GameObject } from "./gameObject.js";
+export class Astroid extends GameObject {
+    constructor(tagName) {
+        super(tagName);
         this.x = Math.random() * window.innerWidth;
         this.y = 270 - Math.random() * 30;
         this.xSpeed = 2;
@@ -14,17 +10,11 @@ export class Astroid {
     update() {
         this.y += this.ySpeed;
         this.x -= this.xSpeed;
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
         if (this.y + this.div.clientHeight > 600) {
             this.y = -70;
-            this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
+            this.x = 300 + Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         }
-    }
-    getRect() {
-        return this.div.getBoundingClientRect();
-    }
-    remove() {
-        this.div.remove();
+        super.update();
     }
 }
 //# sourceMappingURL=astroid.js.map

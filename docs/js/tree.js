@@ -1,16 +1,16 @@
-export class Tree {
-    constructor() {
-        console.log("Tree was created");
-        this.create();
-    }
-    create() {
-        this.div = document.createElement("tree");
-        document.body.appendChild(this.div);
-        this.x = 400;
-        this.y = 500;
+import { GameObject } from "./gameObject.js";
+export class Tree extends GameObject {
+    constructor(tagName) {
+        super(tagName);
+        this.x = Math.floor(Math.random() * window.innerWidth) + window.innerWidth;
+        this.y = 550;
     }
     update() {
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        this.x -= 3;
+        super.update();
+        if (this.x < -this.div.clientWidth) {
+            this.x = window.innerWidth;
+        }
     }
 }
 //# sourceMappingURL=tree.js.map
