@@ -21,7 +21,7 @@ export class Player extends GameObject {
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = 600;
         
-        this.health = 2;    
+        this.health = 5;    
     }
     
     update() {
